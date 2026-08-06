@@ -1577,12 +1577,16 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
         return Boolean(backup && !["none", "n/a", "na", "not available", "no backup", "no backup available"].includes(backup));
       }
 
+      function lockClinicianValidationButtons() {
+        clinicianAcceptButton.disabled = true;
+        clinicianDeclineButton.disabled = true;
+      }
+
       clinicianAcceptButton.addEventListener("click", () => {
         openAcceptConfirmation(`Confirm that ${recommendedClinician} accepted ${patientLabel}?`, () => {
           roleSelect.value = "Clinician";
           clinicianStatus.textContent = `${recommendedClinician} accepted ${patientLabel}. Visit status is Accepted.`;
-          clinicianAcceptButton.disabled = true;
-          clinicianDeclineButton.disabled = true;
+          lockClinicianValidationButtons();
           recordHumanAction("Clinician accepted", `${recommendedClinician} accepted ${patientLabel}. Loop complete.`);
         });
       });
@@ -1595,10 +1599,12 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
           clinicianStatus.textContent = `${recommendedClinician} declined: ${cleanReason}. No backup clinician is available, so supervisor review is required.`;
           escalationReasonDisplay.textContent = "Escalation reason: Clinician declined and no backup clinician is available.";
           escalationReasonDisplay.hidden = false;
+          lockClinicianValidationButtons();
           recordHumanAction("Escalated", `${recommendedClinician} declined the visit: ${cleanReason}. No backup clinician is available, so the case was escalated to a supervisor.`);
           return;
         }
         clinicianStatus.textContent = `${recommendedClinician} declined: ${cleanReason}. Backup clinician can move to clinician confirmation.`;
+        lockClinicianValidationButtons();
         recordHumanAction("Clinician declined", `${recommendedClinician} declined ${patientLabel}: ${cleanReason}. Backup clinician can move to clinician confirmation.`);
       });
 
