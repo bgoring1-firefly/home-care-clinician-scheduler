@@ -589,6 +589,22 @@
     </section>
   </div>
 
+  <div class="modal" id="accept-confirm-modal" hidden>
+    <section class="modal-card">
+      <div class="panel-head">
+        <span>Confirm clinician acceptance</span>
+        <button class="btn modal-close" type="button" id="close-accept-confirm">Close</button>
+      </div>
+      <div class="panel-body stack">
+        <p class="boundary-note" id="accept-confirm-message"></p>
+        <div class="review-actions">
+          <button class="btn approve" type="button" id="confirm-accept">Confirm acceptance</button>
+          <button class="btn danger" type="button" id="cancel-accept">Cancel</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
   <main class="console" id="cases-view">
     <aside class="side-rail">
       <section class="panel">
@@ -706,6 +722,7 @@
     const RUN_LOG = [];
     const CASE_VIEWS = [];
     const EVAL_VIEWS = [];
+    let pendingAcceptAction = null;
     const EVAL_RESULTS_STORAGE_KEY = "careroute_eval_results";
     const INITIAL_EVAL_RESULTS = {
       "E-01": {
@@ -1562,13 +1579,13 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       }
 
       clinicianAcceptButton.addEventListener("click", () => {
-        const confirmed = confirm(`Confirm that ${recommendedClinician} accepted ${patientLabel}?`);
-        if (!confirmed) return;
-        roleSelect.value = "Clinician";
-        clinicianStatus.textContent = `${recommendedClinician} accepted ${patientLabel}. Visit status is Accepted.`;
-        clinicianAcceptButton.disabled = true;
-        clinicianDeclineButton.disabled = true;
-        recordHumanAction("Clinician accepted", `${recommendedClinician} accepted ${patientLabel}. Loop complete.`);
+        openAcceptConfirmation(`Confirm that ${recommendedClinician} accepted ${patientLabel}?`, () => {
+          roleSelect.value = "Clinician";
+          clinicianStatus.textContent = `${recommendedClinician} accepted ${patientLabel}. Visit status is Accepted.`;
+          clinicianAcceptButton.disabled = true;
+          clinicianDeclineButton.disabled = true;
+          recordHumanAction("Clinician accepted", `${recommendedClinician} accepted ${patientLabel}. Loop complete.`);
+        });
       });
 
       clinicianDeclineButton.addEventListener("click", () => {
@@ -1673,6 +1690,17 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       RUN_LOG.forEach((entry) => {
         appendLogRow(fullRunLog, entry);
       });
+    }
+
+    function openAcceptConfirmation(message, onConfirm) {
+      pendingAcceptAction = onConfirm;
+      document.getElementById("accept-confirm-message").textContent = message;
+      document.getElementById("accept-confirm-modal").hidden = false;
+    }
+
+    function closeAcceptConfirmation() {
+      pendingAcceptAction = null;
+      document.getElementById("accept-confirm-modal").hidden = true;
     }
 
     async function runAgentForCase(request, resultNode, button) {
@@ -2161,6 +2189,14 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
 
       document.getElementById("close-run-log").addEventListener("click", () => {
         document.getElementById("run-log-modal").hidden = true;
+      });
+
+      document.getElementById("close-accept-confirm").addEventListener("click", closeAcceptConfirmation);
+      document.getElementById("cancel-accept").addEventListener("click", closeAcceptConfirmation);
+      document.getElementById("confirm-accept").addEventListener("click", () => {
+        const action = pendingAcceptAction;
+        closeAcceptConfirmation();
+        if (action) action();
       });
 
       form.addEventListener("submit", (event) => {
