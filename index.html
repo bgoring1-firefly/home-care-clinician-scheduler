@@ -1396,9 +1396,7 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       badge.className = decisionStatus.includes("REFUSED") ? "decision-badge badge danger" : "decision-badge badge ok";
       resultNode.appendChild(el("div", "Decision", { class: "stage", "data-n": "3" }));
       resultNode.appendChild(badge);
-      resultNode.appendChild(renderCitationTags(fields));
 
-      resultNode.appendChild(el("div", "Output", { class: "stage", "data-n": "4" }));
       const list = el("div");
       PRIMARY_OUTPUT_FIELDS.forEach((field) => {
         const value = displayFieldValue(field, fields[field] || "");
@@ -1409,8 +1407,9 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
         list.appendChild(row);
       });
       resultNode.appendChild(list);
+      resultNode.appendChild(renderCitationTags(fields));
       const fullOutput = el("details", undefined, { class: "compact" });
-      fullOutput.appendChild(el("summary", "View all output fields"));
+      fullOutput.appendChild(el("summary", "View all decision fields"));
       OUTPUT_FIELDS.forEach((field) => {
         if (PRIMARY_OUTPUT_FIELDS.includes(field)) return;
         const value = displayFieldValue(field, fields[field] || "");
@@ -1421,7 +1420,7 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
         fullOutput.appendChild(row);
       });
       resultNode.appendChild(fullOutput);
-      resultNode.appendChild(el("div", "Review", { class: "stage", "data-n": "5" }));
+      resultNode.appendChild(el("div", "User Validation", { class: "stage", "data-n": "4" }));
       resultNode.appendChild(renderReviewGate(request, fields));
       appendRunLog({
         caseId: request.request_id,
