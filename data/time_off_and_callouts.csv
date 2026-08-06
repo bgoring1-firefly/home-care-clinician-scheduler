@@ -1,0 +1,6 @@
+status_id,clinician_id,date,status,reason
+TO-7001,CL-204,2026-08-03,Called out,Sick call
+TO-7002,CL-205,2026-08-03,Called out,Family emergency
+TO-7003,CL-208,2026-08-04,Vacation,Planned time off
+TO-7004,CL-210,2026-08-03,Available,No restriction
+TO-7005,CL-202,2026-08-05,Vacation,Planned time off

@@ -1,0 +1,7 @@
+zone,building_or_grid,nearby_zones,travel_note
+Zone A,Aster House A-01 to A-20,"Zone B;Zone D",Low travel within Zone A; moderate travel to Zone B
+Zone B,Bayside Towers B-01 to B-25,"Zone A;Zone C",Low travel within Zone B; moderate travel to Zone C
+Zone C,Copper Ridge C-01 to C-20,"Zone B;Zone D;Zone E",Low travel within Zone C; moderate travel to Zone D
+Zone D,Dunhill Manor D-01 to D-18,"Zone A;Zone C;Zone E",Low travel within Zone D; moderate travel to Zone C
+Zone E,Elm Court E-01 to E-15,"Zone C;Zone D",Low travel within Zone E; moderate travel to Zone C
+Zone F,Fairview F-01 to F-10,"None",Out of standard home care territory

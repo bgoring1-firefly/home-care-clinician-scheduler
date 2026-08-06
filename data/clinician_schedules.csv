@@ -1,0 +1,16 @@
+schedule_id,clinician_id,date,time_window,zone,building_or_grid,visit_status,patient_id
+S-5001,CL-201,2026-08-03,08:00-09:00,Zone B,Bayside Towers B-10,Accepted,P-3001
+S-5002,CL-201,2026-08-03,12:30-13:30,Zone B,Bayside Towers B-20,Accepted,P-3002
+S-5003,CL-202,2026-08-03,09:30-10:30,Zone B,Bayside Towers B-19,Accepted,P-3003
+S-5004,CL-202,2026-08-03,14:00-15:00,Zone C,Copper Ridge C-08,Pending,P-3004
+S-5005,CL-203,2026-08-03,11:00-12:00,Zone A,Aster House A-02,Accepted,P-3005
+S-5006,CL-204,2026-08-03,09:00-10:00,Zone C,Copper Ridge C-07,Accepted,P-3006
+S-5007,CL-204,2026-08-03,13:00-14:00,Zone C,Copper Ridge C-09,Accepted,P-3007
+S-5008,CL-205,2026-08-03,10:00-11:00,Zone C,Copper Ridge C-13,Accepted,P-3008
+S-5009,CL-206,2026-08-03,13:30-14:30,Zone C,Copper Ridge C-16,Accepted,P-3009
+S-5010,CL-207,2026-08-03,08:00-09:00,Zone D,Dunhill Manor D-03,Accepted,P-3010
+S-5011,CL-208,2026-08-03,10:00-11:30,Zone E,Elm Court E-04,Accepted,P-3011
+S-5012,CL-209,2026-08-03,13:00-14:00,Zone A,Aster House A-10,Accepted,P-3012
+S-5013,CL-210,2026-08-03,15:00-16:00,Zone B,Bayside Towers B-08,Accepted,P-3013
+S-5014,CL-211,2026-08-03,09:00-10:00,Zone C,Copper Ridge C-10,Accepted,P-3014
+S-5015,CL-212,2026-08-03,11:00-12:00,Zone A,Aster House A-05,Accepted,P-3015

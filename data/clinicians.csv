@@ -1,0 +1,13 @@
+clinician_id,clinician_name,discipline,skills,primary_zone,secondary_zone,work_hours,max_daily_visits,max_active_caseload
+CL-201,Nora Walsh,RN,"Wound care certification;Medication teaching;Diabetes education",Zone B,Zone A,08:00-16:00,6,32
+CL-202,Malik Grant,RN,"Wound care certification;Medication teaching;IV maintenance",Zone B,Zone C,09:00-17:00,6,30
+CL-203,Elena Park,RN,"Medication teaching;Diabetes education;On-call triage",Zone A,Zone B,10:00-18:00,5,28
+CL-204,Theo Martin,PT,"Orthopedic rehab;Gait training;Fall prevention",Zone C,Zone B,08:00-16:00,7,34
+CL-205,Priya Shah,PT,"Orthopedic rehab;Balance training;Fall prevention",Zone C,Zone D,09:00-17:00,7,34
+CL-206,Andre Lewis,PT,"Gait training;Fall prevention;Home exercise setup",Zone D,Zone C,08:00-16:00,7,36
+CL-207,Mina Torres,Home Health Aide,"ADL assistance;Bathing assistance;Meal support",Zone D,Zone E,07:00-15:00,8,40
+CL-208,Owen Price,Speech Therapist,"Dysphagia assessment;Speech evaluation",Zone E,Zone C,09:00-17:00,5,24
+CL-209,Sofia Bennett,OT,"Home safety;ADL training;Equipment assessment",Zone A,Zone B,08:00-16:00,6,28
+CL-210,Noah Kim,Behavioral Health Nurse,"Medication safety;Behavioral health assessment",Zone B,Zone A,10:00-18:00,5,24
+CL-211,Lena Ortiz,Case Manager,"Discharge coordination;Care plan review",Zone C,Zone B,08:00-16:00,6,30
+CL-212,Evan Ross,Medical Social Worker,"Community resources;Caregiver support",Zone A,Zone D,09:00-17:00,5,24

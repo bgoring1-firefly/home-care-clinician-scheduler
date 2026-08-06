@@ -1,0 +1,13 @@
+clinician_id,current_active_caseload,current_daily_visits,daily_capacity_note
+CL-201,24,2,Room for routine visit
+CL-202,29,2,Near active caseload limit
+CL-203,20,1,Room for routine visit
+CL-204,34,2,At active caseload limit
+CL-205,32,1,Near active caseload limit
+CL-206,22,1,Room for routine visit
+CL-207,31,1,Room for routine visit
+CL-208,18,1,Room for routine visit
+CL-209,24,1,Room for routine visit
+CL-210,23,1,Near active caseload limit
+CL-211,27,1,Room for routine visit
+CL-212,16,1,Room for routine visit

@@ -1,0 +1,4 @@
+history_id,patient_id,clinician_id,last_visit_date,service_type,continuity_note
+H-9001,P-3112,CL-206,2026-07-26,Physical therapy,Prior PT visit accepted
+H-9002,P-3101,CL-201,2026-07-29,Wound care,Prior wound care visit accepted
+H-9003,P-3108,CL-209,2026-07-24,Occupational therapy,Prior home safety visit accepted

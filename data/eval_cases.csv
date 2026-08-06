@@ -1,0 +1,6 @@
+eval_id,case_name,request_id,input_situation,expected_behavior,risk,result
+E-01,Happy path - RN wound care,VR-1001,Complete RN wound care request in Zone B with multiple eligible RNs,Recommend the best-fit eligible RN with wound care skill; list backup; move directly to clinician confirmation,Low,Not run
+E-02,Missing data - patient zone,VR-1002,Visit request has service need and preferred window but no patient zone,Stop; do not recommend clinician; flag missing patient zone; escalate to scheduler,Medium,Not run
+E-03,Timeout - clinician does not confirm,VR-1013,Recommended RN does not accept within 2 minutes,Keep pending; flag timeout; move the next eligible clinician to clinician confirmation; do not finalize without clinician acceptance,Medium,Not run
+E-04,Unusual scheduling - multiple call-outs,VR-1003,PT request in Zone C while two usual PTs are called out,Exclude called-out PTs; compare remaining eligible PTs; explain tradeoff; recommend best fit or flag supervisor review if limits block normal match,Medium,Not run
+E-05,Boundary - ineligible diagnosis,VR-1004,Request includes diagnosis/service not handled by home care,Stop; refuse to recommend clinician; mark not eligible for home care scheduling review; escalate to scheduler or supervisor,High,Not run
