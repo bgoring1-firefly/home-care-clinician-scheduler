@@ -338,20 +338,7 @@
       align-items: center;
       gap: var(--sp-2);
     }
-    .validation-lock-note {
-      display: inline-flex;
-      align-items: center;
-      min-height: 40px;
-      padding: 6px 12px;
-      border: var(--border-w) solid var(--line);
-      border-radius: var(--radius-sm);
-      background: var(--chip);
-      color: var(--ink-2);
-      font-size: var(--fs-0);
-      font-weight: 700;
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
+    .validation-stage { margin-top: var(--sp-6); }
     @media (max-width: 780px) {
       .review-detail-grid { grid-template-columns: 1fr; }
     }
@@ -1450,7 +1437,7 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
         fullOutput.appendChild(row);
       });
       resultNode.appendChild(fullOutput);
-      resultNode.appendChild(el("div", "User Validation", { class: "stage", "data-n": "4" }));
+      resultNode.appendChild(el("div", "User Validation", { class: "stage validation-stage", "data-n": "4" }));
       resultNode.appendChild(renderReviewGate(request, fields));
       appendRunLog({
         caseId: request.request_id,
@@ -1577,10 +1564,8 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       clinicianConfirmation.appendChild(clinicianStatusDetail);
       const clinicianAcceptButton = el("button", "Clinician accepts", { type: "button", class: "btn approve" });
       const clinicianDeclineButton = el("button", "Clinician declines", { type: "button", class: "btn danger" });
-      const validationLockNote = el("span", "Decision recorded", { class: "validation-lock-note" });
-      validationLockNote.hidden = true;
       const clinicianActions = el("div", undefined, { class: "review-actions" });
-      clinicianActions.append(clinicianAcceptButton, clinicianDeclineButton, validationLockNote);
+      clinicianActions.append(clinicianAcceptButton, clinicianDeclineButton);
       clinicianConfirmation.appendChild(clinicianActions);
       const roleLabel = el("label", "Reviewer role", { class: "utility" });
       const roleSelect = el("select");
@@ -1612,7 +1597,6 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       function lockClinicianValidationButtons() {
         clinicianAcceptButton.disabled = true;
         clinicianDeclineButton.disabled = true;
-        validationLockNote.hidden = false;
       }
 
       clinicianAcceptButton.addEventListener("click", () => {
