@@ -1522,7 +1522,7 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
 
       const escalateButton = el("button", "Escalate", { type: "button", class: "btn danger" });
       const clinicianConfirmation = el("section", undefined, { class: "review-card" });
-      clinicianConfirmation.appendChild(el("h4", "Response controls"));
+      clinicianConfirmation.appendChild(el("h4", "Clinician validation"));
       const recommendedClinician = fields["Recommended clinician"] || "recommended clinician";
       const clinicianStatus = el("div", `Pending response from ${recommendedClinician} for ${patientLabel}.`, { class: "value" });
       const clinicianStatusDetail = el("div", undefined, { class: "review-detail full" });
@@ -1562,8 +1562,12 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
       }
 
       clinicianAcceptButton.addEventListener("click", () => {
+        const confirmed = confirm(`Confirm that ${recommendedClinician} accepted ${patientLabel}?`);
+        if (!confirmed) return;
         roleSelect.value = "Clinician";
         clinicianStatus.textContent = `${recommendedClinician} accepted ${patientLabel}. Visit status is Accepted.`;
+        clinicianAcceptButton.disabled = true;
+        clinicianDeclineButton.disabled = true;
         recordHumanAction("Clinician accepted", `${recommendedClinician} accepted ${patientLabel}. Loop complete.`);
       });
 
@@ -1613,8 +1617,11 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
         badgeClass = "badge warn";
         label = "Pending clinician";
       } else if (normalizedAction.includes("clinician accepted")) {
-        badgeClass = "badge ok";
-        label = "Accepted";
+        view.outcome.textContent = "";
+        if (document.getElementById("case-select").value === requestId) {
+          document.getElementById("case-status").textContent = "";
+        }
+        return;
       } else if (normalizedAction.includes("pending clinician")) {
         badgeClass = "badge warn";
         label = "Pending clinician";
