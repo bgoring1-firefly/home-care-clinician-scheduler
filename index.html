@@ -1539,7 +1539,7 @@ When multiple clinicians qualify, the agent should prefer continuity of care if 
 
       const escalateButton = el("button", "Escalate", { type: "button", class: "btn danger" });
       const clinicianConfirmation = el("section", undefined, { class: "review-card" });
-      clinicianConfirmation.appendChild(el("h4", "Clinician validation"));
+      clinicianConfirmation.appendChild(el("h4", "User validation"));
       const recommendedClinician = fields["Recommended clinician"] || "recommended clinician";
       const clinicianStatus = el("div", `Pending response from ${recommendedClinician} for ${patientLabel}.`, { class: "value" });
       const clinicianStatusDetail = el("div", undefined, { class: "review-detail full" });
